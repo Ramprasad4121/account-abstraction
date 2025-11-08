@@ -1,12 +1,5 @@
 # Account Abstraction
 
-<br/>
-<p align="center">
-<img src="./img/ethereum/account-abstraction-again.png" width="500" alt="aa">
-</p>
-<br/>
-
-
 
 ## What is Account Abstraction?
 
