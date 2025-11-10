@@ -6,7 +6,7 @@
   <a href="https://github.com/Ramprasad4121/account-abstraction">
     <img src="docs/images/aa-banner.png" alt="Account Abstraction Banner" width="600" height="300"> <!-- Add your banner image here -->
   <!-- </a>
-</div> --> -->
+<!-- </div> --> 
 
 <div align="center">
   Smart Wallets with Alt-Mempool & Native AA
