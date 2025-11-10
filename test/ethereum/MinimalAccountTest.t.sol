@@ -13,8 +13,6 @@ import {ZkSyncChainChecker} from "lib/foundry-devops/src/ZkSyncChainChecker.sol"
 import {PackedUserOperation} from "lib/account-abstraction/contracts/interfaces/PackedUserOperation.sol";
 import {IEntryPoint} from "lib/account-abstraction/contracts/interfaces/IEntryPoint.sol";
 
-
-
 contract MinimalAccountTest is Test, ZkSyncChainChecker {
     using MessageHashUtils for bytes32;
 
@@ -133,6 +131,4 @@ contract MinimalAccountTest is Test, ZkSyncChainChecker {
         // Assert
         assertEq(usdc.balanceOf(address(minimalAccount)), AMOUNT);
     }
-
-
- }
+}

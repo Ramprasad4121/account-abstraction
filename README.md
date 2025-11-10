@@ -1,113 +1,177 @@
 # Account Abstraction
 
+<<<<<<< HEAD
+=======
+<!-- <div align="center">
+  <a href="https://github.com/Ramprasad4121/account-abstraction">
+    <img src="docs/images/aa-banner.png" alt="Account Abstraction Banner" width="600" height="300"> <!-- Add your banner image here -->
+  </a>
+</div> -->
 
-## What is Account Abstraction?
+<div align="center">
+  Smart Wallets with Alt-Mempool & Native AA
+  <br />
+  <a href="#about"><strong>Explore the demo »</strong></a>
+  <br />
+  <br />
+  <a href="https://github.com/Ramprasad4121/account-abstraction/issues/new?assignees=&labels=bug&template=01_BUG_REPORT.md&title=bug%3A+">Report a Bug</a>
+  ·
+  <a href="https://github.com/Ramprasad4121/account-abstraction/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a>
+  ·
+  <a href="https://github.com/Ramprasad4121/account-abstraction/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+">Ask a Question</a>
+</div>
 
-EoAs are now smart contracts. That's all account abstraction is.
+<div align="center">
+<br />
+>>>>>>> a08736c (updated readme.md)
 
-But what does that mean?
+[![Solidity](https://img.shields.io/badge/Solidity-^0.8.20-blue)](https://soliditylang.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-Right now, every single transaction in web3 stems from a single private key. 
+</div>
 
-> account abstraction means that not only the execution of a transaction can be arbitrarily complex computation logic as specified by the EVM, but also the authorization logic.
+<details open="open">
+<summary>Table of Contents</summary>
 
-- [Vitalik Buterin](https://ethereum-magicians.org/t/implementing-account-abstraction-as-part-of-eth1-x/4020)
-- [EntryPoint Contract v0.6](https://etherscan.io/address/0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789)
-- [EntryPoint Contract v0.7](https://etherscan.io/address/0x0000000071727De22E5E9d8BAf0edAc6f37da032)
-- [zkSync AA Transaction Flow](https://docs.zksync.io/build/developer-reference/account-abstraction.html#the-transaction-flow)
+- [Account Abstraction](#account-abstraction)
+  - [About](#about)
+    - [Built With](#built-with)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+  - [Usage](#usage)
+    - [EVM (Arbitrum)](#evm-arbitrum)
+    - [zkSync Local](#zksync-local)
+    - [Other](#other)
+  - [Roadmap](#roadmap)
+  - [Support](#support)
+  - [Project Assistance](#project-assistance)
+  - [Contributing](#contributing)
+  - [Authors \& Contributors](#authors--contributors)
+  - [Security](#security)
+  - [License](#license)
+  - [Acknowledgements](#acknowledgements)
 
-## What's this repo show?
+</details>
 
-1. A minimal EVM "Smart Wallet" using alt-mempool AA
-2. A minimal zkSync "Smart Wallet" using native AA
-   1. [zkSync uses native AA, which is slightly different than ERC-4337](https://docs.zksync.io/build/developer-reference/account-abstraction.html#iaccount-interface)
- 
+---
 
-# Getting Started 
+## About
 
-## Requirements
+Demonstrates account abstraction by turning EOAs into smart wallets. Features minimal EVM implementation with alt-mempool AA and zkSync native AA via IAccount (differs from ERC-4337). Supports deployment to Arbitrum and zkSync local for testing user operations and simulations.
 
-- [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-  - You'll know you did it right if you can run `git --version` and you see a response like `git version x.x.x`
-- [foundry](https://getfoundry.sh/)
-  - You'll know you did it right if you can run `forge --version` and you see a response like `forge 0.2.0 (816e00b 2023-03-16T00:05:26.396218Z)`
-- [foundry-zksync](https://github.com/matter-labs/foundry-zksync)
-  - You'll know you did it right if you can run `forge-zksync --help` and you see `zksync` somewhere in the output
+Why this? To illustrate AA differences across chains, enabling gasless txs, social recovery, and batching.
 
-## Installation
+<!-- <details>
+<summary>Screenshots</summary>
+<br>
 
-```bash
-git clone https://github.com/Ramprasad4121/account-abstraction.git
-cd account-abstraction
-make
-```
+|                               EVM Deployment Console                               |                               zkSync Test Output                               |
+| :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
+| <img src="docs/images/deploy-eth.png" title="Arbitrum Deploy" width="100%"> | <img src="docs/images/zk-test.png" title="zkSync Tests" width="100%"> |
 
-# Quickstart 
+> Add screenshots of `make deployEth` and `make zktest`.
 
-## Vanilla Foundry
+</details> -->
 
-```bash
-foundryup
-make test
-```
+### Built With
 
-### Deploy - Arbitrum
+- [Foundry](https://book.getfoundry.sh/) – EVM testing/deployment
+- [foundry-zksync](https://github.com/zksync-toolchain/foundry-zksync) – zkSync tooling
+- Solidity ^0.8.20
+- [Make](https://www.gnu.org/software/make/) – Automation
+- zkSync CLI, Docker – Local node
 
-```bash
-make deployEth
-```
+## Getting Started
 
-### User operation - Arbitrum
+### Prerequisites
 
-```bash
-make sendUserOp
-```
+- Git (`git --version`)
+- Foundry (`curl -L https://foundry.paradigm.xyz | bash && foundryup`; `forge --version`)
+- foundry-zksync (`curl -L https://github.com/zksync-toolchain/foundry-zksync/releases/latest/download/foundryup-init.sh | bash`; `foundryup-zksync`)
+- npm/yarn (`npm --version`; `yarn --version`)
+- Docker (`docker --version`; ensure daemon running)
 
-## zkSync Foundry
+### Installation
 
-```bash
-foundryup-zksync
-make zkbuild
-make zktest
-```
+1. Clone:
+   ```bash
+   git clone https://github.com/Ramprasad4121/account-abstraction.git
+   cd account-abstraction
+   ```
 
-### Deploy - zkSync local network
+2. Setup:
+   ```bash
+   forge build
+   make
+   ```
 
-#### Additional Requirements
-- [npx & npm](https://docs.npmjs.com/cli/v10/commands/npm-install)
-  - You'll know you did it right if you can run `npm --version` and you see a response like `7.24.0` and `npx --version` and you see a response like `8.1.0`.
-- [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable)
-  - You'll know you did it right if you can run `yarn --version` and you see a response like `1.22.17`.
-- [docker](https://docs.docker.com/engine/install/)
-  - You'll know you did it right if you can run `docker --version` and you see a response like `Docker version 20.10.7, build f0df350`.
-  - Then, you'll want the daemon running, you'll know it's running if you can run `docker --info` and in the output you'll see something like the following to know it's running:
-```bash
-Client:
- Context:    default
- Debug Mode: false
-```
+3. `.env` from `.env.example`: Add `PRIVATE_KEY` (test only; no real funds).
 
-Install dependencies:
-```bash
-yarn
-```
+## Usage
 
-#### Setup - local node
+### EVM (Arbitrum)
 
-```bash
-# Select `in memory node` and nothing else
-npx zksync-cli dev start
-```
+- Test: `make test`
+- Deploy: `make deployEth`
+- Send UserOp: `make sendUserOp`
 
-#### Deploy - local node
+### zkSync Local
 
-> [!IMPORTANT]  
-> *Never* have a private key associated with real funds in plaintext. 
+1. Start node:
+   ```bash
+   yarn
+   npx zksync-cli dev start  # Select in-memory node
+   ```
 
-```bash
-# Setup your .env file, see the .env.example for an example
-make zkdeploy
-```
+2. Build/Test: `make zkbuild`; `make zktest`
+3. Deploy: `make zkdeploy`  # Note: UserOps limited on local
 
-> Note: Sending an account abstraction transaction doesn't work on the local network, because we don't have the system contracts setup on the local network. 
+### Other
 
+- Format: `forge fmt`
+- Clean: `make clean`
+
+## Roadmap
+
+[Open issues](https://github.com/Ramprasad4121/account-abstraction/issues).
+
+- Enhancements: ERC-4337 full stack, paymasters
+- Bugs: Vote with 👍
+
+Future: Multi-chain AA, frontend integration.
+
+## Support
+
+- [Issues](https://github.com/Ramprasad4121/account-abstraction/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+)
+- [X](https://x.com/0xramprasad)
+
+## Project Assistance
+
+- ⭐ [Star](https://github.com/Ramprasad4121/account-abstraction)
+- Tweet: "#AccountAbstraction #zkSync"
+- Blog: [Dev.to](https://dev.to/)
+
+## Contributing
+
+Fork, branch (`git checkout -b feature/xyz`), commit, PR. See [CONTRIBUTING.md](docs/CONTRIBUTING.md).
+
+## Authors & Contributors
+
+- [Ramprasad4121](https://github.com/Ramprasad4121)
+
+[Contributors](https://github.com/Ramprasad4121/account-abstraction/contributors)
+
+## Security
+
+Review before prod; test keys only. Report: [SECURITY.md](docs/SECURITY.md). "As is."
+
+## License
+
+MIT License. See [LICENSE](LICENSE).
+
+## Acknowledgements
+
+- [zkSync](https://zksync.io/) – Native AA
+- [Foundry](https://getfoundry.sh/) – Tooling
+- Ethereum/AA community docs.
