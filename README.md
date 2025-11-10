@@ -23,7 +23,7 @@
 
 <div align="center">
 <br />
->>>>>>> a08736c (updated readme.md)
+
 
 [![Solidity](https://img.shields.io/badge/Solidity-^0.8.20-blue)](https://soliditylang.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
